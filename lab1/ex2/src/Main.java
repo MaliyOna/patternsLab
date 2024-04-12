@@ -4,11 +4,11 @@ import java.util.*;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        List<Burger> breakfast = List.of(
+        List<Burger> breakfast = new ArrayList<>(List.of(
                 new Burger(Burger.Size.Small),
                 new Burger(Burger.Size.Medium),
                 new Burger(Burger.Size.Large),
-                new Burger(Burger.Size.Medium));
+                new Burger(Burger.Size.Small)));
 
         System.out.println("Small: " + countBurgerOfSize(breakfast, Burger.Size.Small));
         System.out.println("Medium: " + countBurgerOfSize(breakfast, Burger.Size.Medium));
@@ -22,6 +22,11 @@ public class Main {
             }
 
             System.out.println("Calories: " + allCalories);
+        }
+
+        if(Arrays.asList(args).contains("-sort")) {
+            Collections.sort(breakfast, new MySort());
+            breakfast.forEach(b -> System.out.println(b.GetSize()));
         }
     }
 
