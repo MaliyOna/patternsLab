@@ -1,3 +1,5 @@
+package Models;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,6 +13,16 @@ public class Product implements Serializable, Comparable<Product> {
     private int Count;
 
     public Product(){ }
+
+    public Product(int _id, String _name, String _upc, String _manufacturer, int _price, int _termStorage, int _count){
+        Id = _id;
+        Name = _name;
+        UPC = _upc;
+        Manufacturer = _manufacturer;
+        Price = _price;
+        TermStorage = _termStorage;
+        Count = _count;
+    }
 
     public int getId() { return Id; }
     public void setId(int _id) { Id = _id; }
