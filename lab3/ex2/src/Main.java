@@ -39,6 +39,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
 
         var authentication = false;
+        var attempts = 0;
 
         while (!authentication){
             productView.printSentence("1-login\n2-registration");
@@ -53,11 +54,20 @@ public class Main {
                     }
                     else {
                         productView.printSentence("Incorrect username or password, try again");
+                        attempts++;
+
+                        productView.printSentence("You have " + (5 - attempts) + " attempts left");
                     }
+
+                    if (attempts == 5){
+                        System. exit(0);
+                    }
+
                     productView.printLine();
                     break;
                 case 2:
                     registration();
+                    attempts = 0;
                     productView.printLine();
                     break;
                 default:
